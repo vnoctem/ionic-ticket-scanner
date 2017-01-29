@@ -7,15 +7,15 @@ To install Node.js dependencies
 npm install
 ```
 
-To install Ionic
-```
-npm install -g cordova Ionic
-```
-
 To install Node.js dependencies for Ionic
 ```
 cd mobile
 npm install
+```
+
+To install Ionic
+```
+npm install -g cordova Ionic
 ```
 
 To recreate all needed files in Ionic
