@@ -18,14 +18,9 @@ cd mobile
 npm install
 ```
 
-To install Ionic plugins
+To recreate all needed files in Ionic
 ```
-ionic state restore --plugins
-```
-
-To add android platform in Ionic
-```
-cordova platform add android
+ionic state restore
 ```
 
 If you want to debug the Node.js application, I would highly recommend you to use [Visual Studio Code](https://code.visualstudio.com/)
