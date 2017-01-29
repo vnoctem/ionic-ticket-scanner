@@ -7,13 +7,41 @@ To install Node.js dependencies
 npm install
 ```
 
-To install Bower dependencies
+To install Ionic
 ```
-npm install -g bower
-```
-```
-bower install
+npm install -g cordova Ionic
 ```
 
-If you want to debug the application, I highly recommend you to use [Visual Studio Code](https://code.visualstudio.com/)
+To install Node.js dependencies for Ionic
+```
+cd mobile
+npm install
+```
+
+To install Ionic plugins
+```
+ionic state restore --plugins
+```
+
+To add android platform in Ionic
+```
+cordova platform add android
+```
+
+If you want to debug the Node.js application, I would highly recommend you to use [Visual Studio Code](https://code.visualstudio.com/)
 Here's the [link](https://code.visualstudio.com/Docs/runtimes/nodejs#_debugging-your-express-application) to set up your Visual Studio Code
+
+If you want to emulate the mobile application, I would highly recommend you to use [Genymotion](https://www.genymotion.com/fun-zone/) instead of Android emulator for a better performance
+
+## Launching
+To launch the mobile application in a browser
+```
+cd mobile
+ionic serve
+```
+
+To launch the mobile application in a real device
+```
+cd mobile
+ionic run android
+```
