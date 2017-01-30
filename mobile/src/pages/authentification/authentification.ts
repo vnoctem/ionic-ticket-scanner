@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
+import { AccueilPage } from '../accueil/accueil';
 
 /*
   Generated class for the Authentification page.
@@ -18,7 +19,7 @@ private error: any = '';
 // variable only for prototype
 /************************************** */
 private networkNotFound: boolean = false;
-private serverUnAvailable: boolean = false;
+private serverUnavailable: boolean = false;
 /************************************** */
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
@@ -34,7 +35,7 @@ private serverUnAvailable: boolean = false;
   // only for prototype
   crashNetwork() {
     this.networkNotFound = true;
-    this.serverUnAvailable = false;
+    this.serverUnavailable = false;
     this.presentLoading();
   }
 
@@ -59,7 +60,7 @@ private serverUnAvailable: boolean = false;
   // only for prototype
   crashServer() {
     this.networkNotFound = false;
-    this.serverUnAvailable = true;
+    this.serverUnavailable = true;
     this.presentLoading();
   }
 
@@ -69,7 +70,7 @@ private serverUnAvailable: boolean = false;
       loader.present();
 
       // only for prototype
-      if (this.serverUnAvailable) {
+      if (this.serverUnavailable) {
         loader.dismiss();
         throw('Serveur indisponible');
       }
@@ -92,6 +93,11 @@ private serverUnAvailable: boolean = false;
     .catch((msg) => {
       this.error = msg;
     });
+  }
+
+  // navigation for prototype (go to Accueil)
+  goToAccueil() {
+    this.navCtrl.setRoot(AccueilPage);
   }
 
 }

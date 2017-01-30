@@ -1,0 +1,50 @@
+<!--
+  Generated template for the Accueil page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Accueil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div padding class="div-content" *ngIf="isOriginScanner">
+
+      <div [ngClass]="classesColorBanner">
+        <label *ngIf="isTicketValid" class="label-result">Billet valide</label>
+        <label *ngIf="!isTicketValid" class="label-result">Billet invalide</label>
+      </div>
+      <ion-list class="list-info" *ngIf="isTicketValid">
+          <ion-item>
+            <ion-label>ID billet : _________</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Nom du propriétaire : _____________</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Nom du spectacle : _____________</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Date et heure du spectacle : _____________</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>Lieu du spectacle : _____________</ion-label>
+          </ion-item>
+        </ion-list>
+    </div>
+  
+    <div padding class="div-button-camera">
+      <button ion-button full icon-only (click)="goToScanner()">
+        <!--Basic: auto-select the icon based on the platform -->
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </div>
+    
+</ion-content>

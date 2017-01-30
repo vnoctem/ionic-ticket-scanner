@@ -1,0 +1,27 @@
+page-accueil {
+    .div-button-camera {
+        position: absolute; 
+        bottom: 0;
+        width: 100%;
+    }
+
+    .div-if-valid-ticket {
+        background-color: green;
+    }
+
+    .div-if-invalid-ticket {
+        background-color: red;
+    }
+
+    .label-result {
+        color: ghostwhite;
+        font-size: 32px;
+        text-align: center;
+        display: block;
+    }
+
+    .list-info {
+        position: absolute;
+        top: 16%;
+    }
+}

@@ -21276,6 +21276,38 @@ sub {
   }
 }
 
+page-accueil .div-button-camera {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+page-accueil .div-if-valid-ticket {
+  background-color: green;
+}
+
+page-accueil .div-if-invalid-ticket {
+  background-color: red;
+}
+
+page-accueil .label-result {
+  color: ghostwhite;
+  font-size: 32px;
+  text-align: center;
+  display: block;
+}
+
+page-accueil .list-info {
+  position: absolute;
+  top: 16%;
+}
+
 page-authentification .error {
   color: Red;
+}
+
+page-scanner .div-icon-camera {
+  font-size: 300px;
+  width: 100%;
+  text-align: center;
 }
