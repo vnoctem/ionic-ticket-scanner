@@ -15,7 +15,7 @@
 
 <ion-content padding>
 
-    <div padding class="div-content" *ngIf="isOriginScanner">
+    <div class="div-content" *ngIf="isOriginScanner">
 
       <div [ngClass]="classesColorBanner">
         <label *ngIf="isTicketValid" class="label-result">Billet valide</label>
@@ -23,25 +23,41 @@
       </div>
       <ion-list class="list-info" *ngIf="isTicketValid">
           <ion-item>
-            <ion-label>ID billet : _________</ion-label>
+            <ion-label stacked>ID billet</ion-label>
+            <ion-label>1234567</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label>Nom du propriétaire : _____________</ion-label>
+            <ion-label stacked>Nom du propriétaire</ion-label>
+            <ion-label>Vincent Gauthier</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label>Nom du spectacle : _____________</ion-label>
+            <ion-label stacked>Nom du spectacle</ion-label>
+            <ion-label>Volta du Cirque du Soleil</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label>Date et heure du spectacle : _____________</ion-label>
+            <ion-label stacked>Date et heure du spectacle</ion-label>
+            <ion-label>2017-03-04 19h00</ion-label>
           </ion-item>
           <ion-item>
-            <ion-label>Lieu du spectacle : _____________</ion-label>
+            <ion-label stacked>Nom de la salle</ion-label>
+            <ion-label>Grand Chapiteau</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label stacked>Adresse de la salle</ion-label>
+            <ion-label>145 de la Commune E., Montréal, Qc, H2Y 1J1</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-list class="list-info" *ngIf="!isTicketValid">
+          <ion-item>
+            <ion-label stacked>Raison de l'invadilité</ion-label>
+            <ion-label>Le billet a déjà été scanné.</ion-label>
           </ion-item>
         </ion-list>
     </div>
-  
-    <div padding class="div-button-camera">
-      <button ion-button full icon-only (click)="goToScanner()">
+
+    <div class="div-button-camera">
+      <button ion-button icon-only (click)="goToScanner()">
         <!--Basic: auto-select the icon based on the platform -->
         <ion-icon name="camera"></ion-icon>
       </button>

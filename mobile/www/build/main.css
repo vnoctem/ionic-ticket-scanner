@@ -21279,15 +21279,27 @@ sub {
 page-accueil .div-button-camera {
   position: absolute;
   bottom: 0;
+  right: 0;
+  left: 0;
   width: 100%;
+}
+
+page-accueil .div-button-camera button {
+  margin: 0px;
+  width: 100%;
+  height: 80px;
 }
 
 page-accueil .div-if-valid-ticket {
   background-color: green;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 page-accueil .div-if-invalid-ticket {
   background-color: red;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 page-accueil .label-result {
@@ -21299,7 +21311,7 @@ page-accueil .label-result {
 
 page-accueil .list-info {
   position: absolute;
-  top: 16%;
+  top: 13%;
 }
 
 page-authentification .error {
