@@ -21276,7 +21276,7 @@ sub {
   }
 }
 
-page-accueil .div-button-camera {
+.bottom-block-button {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -21284,22 +21284,27 @@ page-accueil .div-button-camera {
   width: 100%;
 }
 
-page-accueil .div-button-camera button {
+.bottom-block-button button {
   margin: 0px;
   width: 100%;
   height: 80px;
 }
 
-page-accueil .div-if-valid-ticket {
-  background-color: green;
+.no-margin-top {
+  margin-top: 0px;
+}
+
+page-accueil .result-ticket, page-accueil .div-if-valid-ticket, page-accueil .div-if-invalid-ticket {
   border-radius: 5px;
   padding: 10px;
 }
 
+page-accueil .div-if-valid-ticket {
+  background-color: green;
+}
+
 page-accueil .div-if-invalid-ticket {
   background-color: red;
-  border-radius: 5px;
-  padding: 10px;
 }
 
 page-accueil .label-result {

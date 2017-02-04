@@ -16,11 +16,6 @@ import { AccueilPage } from '../accueil/accueil';
 export class AuthentificationPage {
 
 private error: any = '';
-// variable only for prototype
-/************************************** */
-private networkNotFound: boolean = false;
-private serverUnavailable: boolean = false;
-/************************************** */
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
     this.presentLoading();
@@ -32,36 +27,16 @@ private serverUnavailable: boolean = false;
     });
   }
 
-  // only for prototype
-  crashNetwork() {
-    this.networkNotFound = true;
-    this.serverUnavailable = false;
-    this.presentLoading();
-  }
-
   loadNetwork() {
     return new Promise((resolve: any, reject: any) => {
       let loader = this.createLoader("En attente du réseau GTI525...");
       loader.present();
 
-      // only for prototype
-      if (this.networkNotFound) {
-        loader.dismiss();
-        throw('Reseau introuvable');
-      }
-
       setTimeout(() => {
         loader.dismiss();
         resolve();
-      }, 5000);
+      }, 1000);
     });
-  }
-
-  // only for prototype
-  crashServer() {
-    this.networkNotFound = false;
-    this.serverUnavailable = true;
-    this.presentLoading();
   }
 
   loadServer() {
@@ -69,16 +44,10 @@ private serverUnavailable: boolean = false;
       let loader = this.createLoader("En attente du serveur...");
       loader.present();
 
-      // only for prototype
-      if (this.serverUnavailable) {
-        loader.dismiss();
-        throw('Serveur indisponible');
-      }
-
       setTimeout(() => {
         loader.dismiss();
         resolve();
-      }, 5000);
+      }, 1000);
     });
   }
 

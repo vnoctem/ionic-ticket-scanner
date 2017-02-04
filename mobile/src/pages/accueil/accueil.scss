@@ -1,28 +1,18 @@
 page-accueil {
-    .div-button-camera {
-        position: absolute; 
-        bottom: 0;
-        right: 0;
-        left: 0;
-        width: 100%;
-
-        button {
-            margin: 0px;
-            width: 100%;
-            height: 80px;
-        }
+    
+    .result-ticket {
+        border-radius: 5px;
+        padding: 10px;
     }
 
     .div-if-valid-ticket {
+        @extend .result-ticket;
         background-color: green;
-        border-radius: 5px;
-        padding: 10px;
     }
 
     .div-if-invalid-ticket {
+        @extend .result-ticket;
         background-color: red;
-        border-radius: 5px;
-        padding: 10px;
     }
 
     .label-result {

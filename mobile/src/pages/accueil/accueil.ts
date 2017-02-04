@@ -16,11 +16,6 @@ export class AccueilPage {
 
   private isOriginScanner: boolean = false;
   private isTicketValid: boolean = false;
-  
-  private classesColorBanner: any = {
-    'div-if-valid-ticket': false,
-    'div-if-invalid-ticket': false
-  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     
@@ -30,11 +25,6 @@ export class AccueilPage {
     } 
     
     this.isTicketValid = this.navParams.get('isTicketValid');
-    if (this.isTicketValid) {
-      this.classesColorBanner['div-if-valid-ticket'] = true;
-    } else {
-      this.classesColorBanner['div-if-invalid-ticket'] = true;
-    }
     
   }
 

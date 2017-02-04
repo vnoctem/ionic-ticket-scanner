@@ -17,34 +17,34 @@
 
     <div class="div-content" *ngIf="isOriginScanner">
 
-      <div [ngClass]="classesColorBanner">
+      <div class="{{ isTicketValid ? 'div-if-valid-ticket' : 'div-if-invalid-ticket' }}">
         <label *ngIf="isTicketValid" class="label-result">Billet valide</label>
         <label *ngIf="!isTicketValid" class="label-result">Billet invalide</label>
       </div>
       <ion-list class="list-info" *ngIf="isTicketValid">
           <ion-item>
             <ion-label stacked>ID billet</ion-label>
-            <ion-label>1234567</ion-label>
+            <ion-label class="no-margin-top">1234567</ion-label>
           </ion-item>
           <ion-item>
             <ion-label stacked>Nom du propriétaire</ion-label>
-            <ion-label>Vincent Gauthier</ion-label>
+            <ion-label class="no-margin-top">Vincent Gauthier</ion-label>
           </ion-item>
           <ion-item>
             <ion-label stacked>Nom du spectacle</ion-label>
-            <ion-label>Volta du Cirque du Soleil</ion-label>
+            <ion-label class="no-margin-top">Volta du Cirque du Soleil</ion-label>
           </ion-item>
           <ion-item>
             <ion-label stacked>Date et heure du spectacle</ion-label>
-            <ion-label>2017-03-04 19h00</ion-label>
+            <ion-label class="no-margin-top">2017-03-04 19h00</ion-label>
           </ion-item>
           <ion-item>
             <ion-label stacked>Nom de la salle</ion-label>
-            <ion-label>Grand Chapiteau</ion-label>
+            <ion-label class="no-margin-top">Grand Chapiteau</ion-label>
           </ion-item>
           <ion-item>
             <ion-label stacked>Adresse de la salle</ion-label>
-            <ion-label>145 de la Commune E., Montréal, Qc, H2Y 1J1</ion-label>
+            <ion-label class="no-margin-top">145 de la Commune E., Montréal, Qc, H2Y 1J1</ion-label>
           </ion-item>
         </ion-list>
 
@@ -56,7 +56,7 @@
         </ion-list>
     </div>
 
-    <div class="div-button-camera">
+    <div class="bottom-block-button">
       <button ion-button icon-only (click)="goToScanner()">
         <!--Basic: auto-select the icon based on the platform -->
         <ion-icon name="camera"></ion-icon>
