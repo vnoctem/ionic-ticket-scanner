@@ -27,9 +27,13 @@ page-accueil {
         top: 13%;
     }
 
-    .item ion-label:nth-child(2) {
-        white-space: normal;
-        overflow: visible;
-        margin-top: 5px;
+    .item {
+        padding-right: 16px;
+
+        ion-label:nth-child(2) {
+            white-space: normal;
+            overflow: visible;
+            margin-top: 5px;
+        }
     }
 }
