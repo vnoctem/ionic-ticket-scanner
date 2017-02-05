@@ -1,16 +1,16 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AuthentificationPage } from '../pages/authentification/authentification';
-import { AccueilPage } from '../pages/accueil/accueil';
+import { AuthenticationPage } from '../pages/authentication/authentication';
+import { HomePage } from '../pages/home/home';
 import { ScannerPage } from '../pages/scanner/scanner';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    AuthentificationPage,
-    AccueilPage,
+    AuthenticationPage,
+    HomePage,
     ScannerPage
   ],
   imports: [
@@ -19,8 +19,8 @@ import { ScannerPage } from '../pages/scanner/scanner';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AuthentificationPage,
-    AccueilPage,
+    AuthenticationPage,
+    HomePage,
     ScannerPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]

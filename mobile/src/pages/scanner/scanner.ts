@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { AccueilPage } from '../accueil/accueil';
+import { HomePage } from '../home/home';
 
 /*
   Generated class for the Scanner page.
@@ -16,18 +16,18 @@ export class ScannerPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  // prototype : go back to AccueilPage with a valid ticket
-  goToAccueilTicketValid() {
-    this.navCtrl.setRoot(AccueilPage, 
+  // prototype : go back to HomePage with a valid ticket
+  goToHomeTicketValid() {
+    this.navCtrl.setRoot(HomePage, 
     {
       origin: this,
       isTicketValid: true
     });
   }
 
-  // prototype : go back to AccueilPage with an invalid ticket
-  goToAccueilTicketInvalid() {
-    this.navCtrl.setRoot(AccueilPage, 
+  // prototype : go back to HomePage with an invalid ticket
+  goToHomeTicketInvalid() {
+    this.navCtrl.setRoot(HomePage, 
     {
       origin: this,
       isTicketValid: false

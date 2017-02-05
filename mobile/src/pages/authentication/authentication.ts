@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
-import { AccueilPage } from '../accueil/accueil';
+import { HomePage } from '../home/home';
 
 /*
-  Generated class for the Authentification page.
+  Generated class for the Authentication page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-authentification',
-  templateUrl: 'authentification.html'
+  selector: 'page-authentication',
+  templateUrl: 'authentication.html'
 })
-export class AuthentificationPage {
+export class AuthenticationPage {
 
 private error: any = '';
 
@@ -64,9 +64,9 @@ private error: any = '';
     });
   }
 
-  // navigation for prototype (go to Accueil)
-  goToAccueil() {
-    this.navCtrl.setRoot(AccueilPage);
+  // navigation for prototype (go to Home)
+  goToHome() {
+    this.navCtrl.setRoot(HomePage);
   }
 
 }

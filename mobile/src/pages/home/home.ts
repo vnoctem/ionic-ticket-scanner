@@ -3,23 +3,23 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ScannerPage } from '../scanner/scanner';
 
 /*
-  Generated class for the Accueil page.
+  Generated class for the Home page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-accueil',
-  templateUrl: 'accueil.html'
+  selector: 'page-home',
+  templateUrl: 'home.html'
 })
-export class AccueilPage {
+export class HomePage {
 
   private isOriginScanner: boolean = false;
   private isTicketValid: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     
-    // check if the page that called AccueilPage is ScannerPage
+    // check if the page that called HomePage is ScannerPage
     if (this.navParams.get('origin') instanceof ScannerPage) {
       this.isOriginScanner = true;
     } 
