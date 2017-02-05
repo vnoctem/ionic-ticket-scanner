@@ -16,10 +16,6 @@ export class ScannerPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ScannerPage');
-  }
-
   // prototype : go back to AccueilPage with a valid ticket
   goToAccueilTicketValid() {
     this.navCtrl.setRoot(AccueilPage, 

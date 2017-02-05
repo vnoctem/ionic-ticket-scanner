@@ -28,10 +28,6 @@ export class AccueilPage {
     
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AccueilPage');
-  }
-
   // navigation for prototype (go to Scanner)
   goToScanner() {
     this.navCtrl.setRoot(ScannerPage);
