@@ -26,4 +26,10 @@ page-accueil {
         position: absolute;
         top: 13%;
     }
+
+    .item ion-label:nth-child(2) {
+        white-space: normal;
+        overflow: visible;
+        margin-top: 5px;
+    }
 }
