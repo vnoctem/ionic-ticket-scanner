@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { AuthentificationPage } from '../pages/authentification/authentification';
+import { AuthenticationPage } from '../pages/authentication/authentication';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = AuthentificationPage;
+  rootPage: any = AuthenticationPage;
 
   constructor(public platform: Platform) {
     this.initializeApp();

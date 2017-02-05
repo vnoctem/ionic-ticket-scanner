@@ -1,0 +1,39 @@
+page-home {
+    
+    .result-ticket {
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .div-if-valid-ticket {
+        @extend .result-ticket;
+        background-color: green;
+    }
+
+    .div-if-invalid-ticket {
+        @extend .result-ticket;
+        background-color: red;
+    }
+
+    .label-result {
+        color: ghostwhite;
+        font-size: 32px;
+        text-align: center;
+        display: block;
+    }
+
+    .list-info {
+        position: absolute;
+        top: 13%;
+    }
+
+    .item {
+        padding-right: 16px;
+
+        ion-label:nth-child(2) {
+            white-space: normal;
+            overflow: visible;
+            margin-top: 5px;
+        }
+    }
+}
