@@ -15,20 +15,27 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-.bottom-block-button {
-    position: absolute; 
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
+$button-height: 70px;
 
-    button {
-        margin: 0px;
-        width: 100%;
-        height: 80px;
-    }
+.list {
+    margin-bottom: $button-height;
 }
 
-.no-margin-top {
-    margin-top: 0px;
+.full-width-action-button {
+    position: fixed;
+
+    .toolbar-md {
+        padding: 0px;
+        height: $button-height;
+    }
+
+    .toolbar-content {
+        height: 100%;
+
+        button {
+            height: 100%;
+            padding: 0px;
+            margin: 0px;
+        }
+    }
 }
