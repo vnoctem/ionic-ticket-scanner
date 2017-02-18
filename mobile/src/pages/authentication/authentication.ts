@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { AuthController } from './../../providers/auth-controller'
 
 /*
   Generated class for the Authentication page.
@@ -15,19 +16,21 @@ import { HomePage } from '../home/home';
 })
 export class AuthenticationPage {
 
-private error: any = '';
+  private username: string;
+  private password: string;
+  private error: any = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public authCtrl: AuthController) {
     this.presentLoading();
   }
 
-  createLoader(content) {
+  public createLoader(content) {
     return this.loadingCtrl.create({
       'content': content
     });
   }
 
-  loadNetwork() {
+  public loadNetwork() {
     return new Promise((resolve: any, reject: any) => {
       let loader = this.createLoader("En attente du réseau GTI525...");
       loader.present();
@@ -39,7 +42,7 @@ private error: any = '';
     });
   }
 
-  loadServer() {
+  public loadServer() {
     return new Promise((resolve: any, reject: any) => {
       let loader = this.createLoader("En attente du serveur...");
       loader.present();
@@ -51,22 +54,28 @@ private error: any = '';
     });
   }
 
-  presentLoading() {
+  public presentLoading() {
     // loading sequence
     // load network first
     this.loadNetwork()
-    .then(() => {
-      // then load server
-      return this.loadServer();
-    })
-    .catch((msg) => {
-      this.error = msg;
-    });
+      .then(() => {
+        // then load server
+        return this.loadServer();
+      })
+      .catch((err) => {
+        this.error = err;
+      });
   }
 
-  // navigation for prototype (go to Home)
-  goToHome() {
-    this.navCtrl.setRoot(HomePage);
+  public login() {
+    this.authCtrl.postLogin({
+      'username': this.username,
+      'password': this.password
+    }).then(user => {
+      this.navCtrl.setRoot(HomePage);
+    }).catch(err => {
+      this.error = err._body.message;
+    });
   }
 
 }
