@@ -5,17 +5,13 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
     <ion-title>Authentification</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
   <ion-list>
-
     <ion-item>
       <ion-label stacked>Nom d'utilisateur</ion-label>
       <ion-input [(ngModel)]="username" type="text"></ion-input>
@@ -30,6 +26,8 @@
       <label class="error">{{error}}</label>
     </div>
 
+    <!-- Empty div preventing Ionic from adding weird styles -->
+    <div></div>
   </ion-list>
 </ion-content>
 

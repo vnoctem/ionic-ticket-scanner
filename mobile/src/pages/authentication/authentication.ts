@@ -72,7 +72,7 @@ export class AuthenticationPage {
       'username': this.username,
       'password': this.password
     }).then(user => {
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(HomePage, { 'isOriginScanner': false });
     }).catch(err => {
       this.error = err._body.message;
     });

@@ -21,27 +21,27 @@
     </ion-item>
     <ion-item>
       <ion-label stacked>ID billet</ion-label>
-      <ion-label class="input-value">1234567</ion-label>
+      <ion-label class="info">{{ticket.id}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Nom du propriétaire</ion-label>
-      <ion-label class="input-value">Vincent Gauthier</ion-label>
+      <ion-label class="info">{{ticket.owner.fullname}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Nom du spectacle</ion-label>
-      <ion-label class="input-value">Volta du Cirque du Soleil</ion-label>
+      <ion-label class="info">{{ticket.showName}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Date et heure du spectacle</ion-label>
-      <ion-label class="input-value">2017-03-04 19h00</ion-label>
+      <ion-label class="info">{{ticket.datetime}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Nom de la salle</ion-label>
-      <ion-label class="input-value">Grand Chapiteau</ion-label>
+      <ion-label class="info">{{ticket.location}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Adresse de la salle</ion-label>
-      <ion-label class="input-value">145 de la Commune E., Montréal, Qc, H2Y 1J1</ion-label>
+      <ion-label class="info">{{ticket.address}}</ion-label>
     </ion-item>
   </ion-list>
 
@@ -51,7 +51,7 @@
     </ion-item>
     <ion-item>
       <ion-label stacked>Raison de l'invadilité</ion-label>
-      <ion-label>Le billet a déjà été scanné.</ion-label>
+      <ion-label class="info">Le billet a déjà été scanné.</ion-label>
     </ion-item>
   </ion-list>
 

@@ -16,19 +16,19 @@ export class HomePage {
 
   private isOriginScanner: boolean = false;
   private isTicketValid: boolean = false;
+  private ticket: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    
     // check if the page that called HomePage is ScannerPage
-    if (this.navParams.get('origin') instanceof ScannerPage) {
-      this.isOriginScanner = true;
-    } 
+    this.isOriginScanner = this.navParams.get('isOriginScanner');
     
     this.isTicketValid = this.navParams.get('isTicketValid');
-    
+    // retrieve the information of the ticket if it's valid
+    if (this.isTicketValid) {
+      this.ticket = this.navParams.get('ticket');
+    }
   }
 
-  // navigation for prototype (go to Scanner)
   goToScanner() {
     this.navCtrl.setRoot(ScannerPage);
   }
