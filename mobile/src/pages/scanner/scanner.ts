@@ -27,20 +27,21 @@ export class ScannerPage {
             { 'GUID': barcodeData.text },
             this.authCtrl.getToken()
           )
-            .then(() => {
+            .then(ticket => {
               // Ticket is valid
               this.navCtrl.setRoot(HomePage,
                 {
-                  origin: this,
-                  isTicketValid: true
+                  'isOriginScanner': true,
+                  'isTicketValid': true,
+                  'ticket': ticket
                 });
             })
-            .catch(() => {
+            .catch(err => {
               // Ticket is invalid
               this.navCtrl.setRoot(HomePage,
                 {
-                  origin: this,
-                  isTicketValid: false
+                  'isOriginScanner': true,
+                  'isTicketValid': false
                 });
             });
         }
