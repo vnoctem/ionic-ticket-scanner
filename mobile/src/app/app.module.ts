@@ -4,6 +4,8 @@ import { MyApp } from './app.component';
 import { AuthenticationPage } from '../pages/authentication/authentication';
 import { HomePage } from '../pages/home/home';
 import { ScannerPage } from '../pages/scanner/scanner';
+import { AuthController } from './../providers/auth-controller';
+import { AppSettings } from './../providers/app-settings';
 
 
 @NgModule({
@@ -23,6 +25,10 @@ import { ScannerPage } from '../pages/scanner/scanner';
     HomePage,
     ScannerPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AppSettings,
+    AuthController
+  ]
 })
 export class AppModule {}

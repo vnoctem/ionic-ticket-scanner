@@ -18,12 +18,12 @@
 
     <ion-item>
       <ion-label stacked>Nom d'utilisateur</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input [(ngModel)]="username" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Mot de passe</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
 
     <div padding *ngIf="error">
@@ -35,6 +35,6 @@
 
 <ion-footer class="full-width-action-button">
   <ion-toolbar>
-    <button ion-button class="button button-block button-block-md button-md-primary" (click)="goToHome()">S'authentifier</button>
+    <button ion-button class="button button-block button-block-md button-md-primary" (click)="login()">S'authentifier</button>
   </ion-toolbar>
 </ion-footer>
