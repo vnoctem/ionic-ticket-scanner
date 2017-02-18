@@ -1,7 +1,7 @@
+import { ConnectionPage } from './../pages/connection/connection';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
 import { AuthenticationPage } from '../pages/authentication/authentication';
 
 
@@ -9,7 +9,7 @@ import { AuthenticationPage } from '../pages/authentication/authentication';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = AuthenticationPage;
+  rootPage: any = ConnectionPage;
 
   constructor(public platform: Platform) {
     this.initializeApp();

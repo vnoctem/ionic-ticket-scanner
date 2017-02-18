@@ -21,50 +21,6 @@ export class AuthenticationPage {
   private error: any = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public authCtrl: AuthController) {
-    this.presentLoading();
-  }
-
-  public createLoader(content) {
-    return this.loadingCtrl.create({
-      'content': content
-    });
-  }
-
-  public loadNetwork() {
-    return new Promise((resolve: any, reject: any) => {
-      let loader = this.createLoader("En attente du réseau GTI525...");
-      loader.present();
-
-      setTimeout(() => {
-        loader.dismiss();
-        resolve();
-      }, 1000);
-    });
-  }
-
-  public loadServer() {
-    return new Promise((resolve: any, reject: any) => {
-      let loader = this.createLoader("En attente du serveur...");
-      loader.present();
-
-      setTimeout(() => {
-        loader.dismiss();
-        resolve();
-      }, 1000);
-    });
-  }
-
-  public presentLoading() {
-    // loading sequence
-    // load network first
-    this.loadNetwork()
-      .then(() => {
-        // then load server
-        return this.loadServer();
-      })
-      .catch((err) => {
-        this.error = err;
-      });
   }
 
   public login() {
