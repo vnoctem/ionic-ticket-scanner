@@ -16,6 +16,9 @@
 <ion-content padding>
 
   <ion-list *ngIf="isTicketValid && isOriginScanner">
+    <audio autoplay>
+      <source src="assets/music/valid_ticket.wav" type="audio/wav">
+    </audio>
     <ion-item class="valid-ticket no-border">
       <label class="label-result">Billet valide</label>
     </ion-item>
@@ -46,6 +49,9 @@
   </ion-list>
 
   <ion-list *ngIf="!isTicketValid && isOriginScanner">
+    <audio autoplay>
+      <source src="assets/music/invalid_ticket.wav" type="audio/wav">
+    </audio>
     <ion-item class="invalid-ticket no-border">
       <label class="label-result">Billet invalide</label>
     </ion-item>
