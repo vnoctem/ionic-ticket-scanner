@@ -6,6 +6,13 @@ var _ = require('lodash');
 router.post('/validation', passport.authenticate('jwt', { session: false }), function (req, res) {
     for (let i = 0; i < tickets.length; i++) {
         if (tickets[i].GUID == req.body.GUID) {
+            //If the GUID was already checked
+            if (tickets[i].alreadyScanned) {
+                res.status(403).json({
+                    'message': 'The ticket was already scanned'
+                });
+                return;
+            }
             let ticket = _.cloneDeep(tickets[i]);
             // Should also update a property so that we can't scan the same qr code several times
             // Remove GUID from the response
@@ -14,9 +21,9 @@ router.post('/validation', passport.authenticate('jwt', { session: false }), fun
             return;
         }
     }
-
     // If nothing found, it means the GUID is not vavlid
-    res.status(400).json({});
+    res.status(400).json({
+        'message': 'The ticket was not found'
+    });
 });
-
 module.exports = router;
