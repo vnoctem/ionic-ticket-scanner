@@ -1,15 +1,14 @@
-import { ConnectionPage } from './../pages/connection/connection';
+import { ConnectionNetworkPage } from '../pages/connection-network/connection-network';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-import { AuthenticationPage } from '../pages/authentication/authentication';
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = ConnectionPage;
+  rootPage: any = ConnectionNetworkPage;
 
   constructor(public platform: Platform) {
     this.initializeApp();
