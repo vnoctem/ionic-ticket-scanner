@@ -29,24 +29,21 @@ export class ConnectionServerPage {
   }
 
   public loadServer() {
-    return new Promise((resolve: any, reject: any) => {
-      let loader = this.createLoader('En attente du serveur...');
-      loader.present()
-        .then(() => {
-          return this.servCtrl.isServerAvailable(''); // empty token
-        })
-        .catch((err: any) => {
-          console.log(err);
-          loader.dismiss();
-          switch (err.status) {
-            case 0:
-              this.error = 'Le serveur n\'est pas disponible.';
-              break;
-            default:
-              this.navCtrl.setRoot(AuthenticationPage);
-          }
-        });
-    });
+    let loader = this.createLoader('En attente du serveur...');
+    loader.present()
+      .then(() => {
+        return this.servCtrl.isServerAvailable();
+      })
+      .catch((err: any) => {
+        loader.dismiss();
+        switch (err.status) {
+          case 0:
+            this.error = 'Le serveur n\'est pas disponible.';
+            break;
+          default:
+            this.navCtrl.setRoot(AuthenticationPage);
+        }
+      });
   }
 
   public retry() {

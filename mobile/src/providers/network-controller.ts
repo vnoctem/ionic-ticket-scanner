@@ -2,11 +2,6 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-const CONFIG = {
-  networkName: 'GTI525',
-  networkPassword: 'GTI525',
-}
-
 /*
   Generated class for the NetworkController provider.
 

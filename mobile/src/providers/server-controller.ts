@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Http } from '@angular/http';
 import { AppSettings } from './app-settings';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 /*
@@ -18,12 +18,11 @@ export class ServerController {
   constructor(public http: Http, public appSettings: AppSettings) {
   }
 
-  public isServerAvailable(token: string) {
-    let headers = new Headers();
-    headers.append('Authorization', token);
+  // we make an empty POST request to the API to verify if it's available or not
+  // it will return a status 0, if the API is not available
+  public isServerAvailable() {
     return this.http.post(
-      this.managementApiUrl + '/tickets/validation',
-      new RequestOptions({ 'headers': headers })
+      this.managementApiUrl + '/tickets/validation', {}
     )
       .map(res => res.json())
       .toPromise();
