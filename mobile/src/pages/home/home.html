@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Accueil</ion-title>
+    <ion-title>{{pageTitle}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -48,14 +48,14 @@
     </ion-item>
   </ion-list>
 
-  <ion-list *ngIf="error && isOriginScanner">
+  <ion-list *ngIf="message && isOriginScanner">
     <audio autoplay>
       <source src="assets/music/invalid_ticket.wav" type="audio/wav">
     </audio>
     <ion-item class="invalid-ticket no-border">
-      <label class="label-result" *ngIf="!isTicketValid">Billet invalide</label>
+      <label class="label-result">{{message}}</label>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="error">
       <ion-label class="error">{{error}}</ion-label>
     </ion-item>
   </ion-list>

@@ -9,7 +9,7 @@ router.post('/validation', passport.authenticate('jwt', { session: false }), fun
             // If the GUID was already checked
             if (tickets[i].alreadyScanned) {
                 res.status(403).json({
-                    'message': 'Le billet a déjà été scanné.'
+                    'message': 'Billet déjà scanné'
                 });
                 return;
             }
@@ -23,7 +23,7 @@ router.post('/validation', passport.authenticate('jwt', { session: false }), fun
     }
     // If nothing found, it means the GUID is not valid
     res.status(400).json({
-        'message': 'Le billet n\'est pas valide.'
+        'message': 'Billet invalide'
     });
 });
 module.exports = router;

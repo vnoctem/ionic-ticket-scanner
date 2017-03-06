@@ -42,7 +42,7 @@ export class ScannerPage {
                 {
                   'isOriginScanner': true,
                   'isTicketValid': false,
-                  'error' : JSON.parse(err._body).message
+                  'message' : JSON.parse(err._body).message
                 });
             });
         }
@@ -52,6 +52,7 @@ export class ScannerPage {
         this.navCtrl.setRoot(HomePage, 
           {
             'isOriginScanner': true,
+            'message': 'Erreur',
             'error': 'Une erreur est survenue lors de la lecture du code QR.'
           });
       });
