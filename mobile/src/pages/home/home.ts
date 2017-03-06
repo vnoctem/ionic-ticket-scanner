@@ -17,6 +17,7 @@ export class HomePage {
   private isOriginScanner: boolean = false;
   private isTicketValid: boolean = false;
   private ticket: any;
+  private error: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // check if the page that called HomePage is ScannerPage
@@ -27,10 +28,11 @@ export class HomePage {
     if (this.isTicketValid) {
       this.ticket = this.navParams.get('ticket');
     }
+
+    this.error = this.navParams.get('error');
   }
 
-  goToScanner() {
-    this.navCtrl.setRoot(ScannerPage);
+  public goToScanner() {
+    this.navCtrl.push(ScannerPage);
   }
-
 }

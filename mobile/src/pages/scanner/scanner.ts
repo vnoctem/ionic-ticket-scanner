@@ -37,18 +37,23 @@ export class ScannerPage {
                 });
             })
             .catch(err => {
-              // Ticket is invalid
+              // Ticket is invalid (invalid QR code or already scanned)
               this.navCtrl.setRoot(HomePage,
                 {
                   'isOriginScanner': true,
-                  'isTicketValid': false
+                  'isTicketValid': false,
+                  'error' : JSON.parse(err._body).message
                 });
             });
         }
       })
-      .catch((err) => {
-        // An error occurred
-        // Need a toast to show the error message
+      .catch(err => {
+        // An error occurred while scanning the QR code
+        this.navCtrl.setRoot(HomePage, 
+          {
+            'isOriginScanner': true,
+            'error': 'Une erreur est survenue lors de la lecture du code QR.'
+          });
       });
   }
 

@@ -6,10 +6,10 @@ var _ = require('lodash');
 router.post('/validation', passport.authenticate('jwt', { session: false }), function (req, res) {
     for (let i = 0; i < tickets.length; i++) {
         if (tickets[i].GUID == req.body.GUID) {
-            //If the GUID was already checked
+            // If the GUID was already checked
             if (tickets[i].alreadyScanned) {
                 res.status(403).json({
-                    'message': 'The ticket was already scanned'
+                    'message': 'Le billet a déjà été scanné.'
                 });
                 return;
             }
@@ -21,9 +21,9 @@ router.post('/validation', passport.authenticate('jwt', { session: false }), fun
             return;
         }
     }
-    // If nothing found, it means the GUID is not vavlid
+    // If nothing found, it means the GUID is not valid
     res.status(400).json({
-        'message': 'The ticket was not found'
+        'message': 'Le billet n\'est pas valide.'
     });
 });
 module.exports = router;
