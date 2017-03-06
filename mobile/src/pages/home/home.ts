@@ -17,20 +17,29 @@ export class HomePage {
   private isOriginScanner: boolean = false;
   private isTicketValid: boolean = false;
   private ticket: any;
+  private message: String;
+  private error: any;
+  private pageTitle: String = 'Accueil';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // check if the page that called HomePage is ScannerPage
     this.isOriginScanner = this.navParams.get('isOriginScanner');
+    // change page title if it's a scan result
+    if (this.isOriginScanner) {
+      this.pageTitle = 'Résultat';
+    }
     
     this.isTicketValid = this.navParams.get('isTicketValid');
     // retrieve the information of the ticket if it's valid
     if (this.isTicketValid) {
       this.ticket = this.navParams.get('ticket');
     }
+
+    this.message = this.navParams.get('message');
+    this.error = this.navParams.get('error');
   }
 
-  goToScanner() {
-    this.navCtrl.setRoot(ScannerPage);
+  public goToScanner() {
+    this.navCtrl.push(ScannerPage);
   }
-
 }

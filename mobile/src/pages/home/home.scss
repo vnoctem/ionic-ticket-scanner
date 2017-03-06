@@ -30,6 +30,14 @@ page-home {
             overflow: visible;
             margin-top: 5px;
         }
+
+        .error {
+            color: #dd5555;
+            font-weight: bold;
+            font-size: 1.2em;
+            white-space: normal;
+            overflow: visible;
+        }
     }
 
     .list-md .item-block.no-border .item-inner {

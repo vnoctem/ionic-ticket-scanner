@@ -5,16 +5,12 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Accueil</ion-title>
+    <ion-title>{{pageTitle}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-
   <ion-list *ngIf="isTicketValid && isOriginScanner">
     <audio autoplay>
       <source src="assets/music/valid_ticket.wav" type="audio/wav">
@@ -23,8 +19,12 @@
       <label class="label-result">Billet valide</label>
     </ion-item>
     <ion-item>
-      <ion-label stacked>ID billet</ion-label>
+      <ion-label stacked>ID</ion-label>
       <ion-label class="info">{{ticket.id}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Hash</ion-label>
+      <ion-label class="info">{{ticket.GUID}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Nom du propriétaire</ion-label>
@@ -48,19 +48,17 @@
     </ion-item>
   </ion-list>
 
-  <ion-list *ngIf="!isTicketValid && isOriginScanner">
+  <ion-list *ngIf="message && isOriginScanner">
     <audio autoplay>
       <source src="assets/music/invalid_ticket.wav" type="audio/wav">
     </audio>
     <ion-item class="invalid-ticket no-border">
-      <label class="label-result">Billet invalide</label>
+      <label class="label-result">{{message}}</label>
     </ion-item>
-    <ion-item>
-      <ion-label stacked>Raison de l'invadilité</ion-label>
-      <ion-label class="info">Le billet a déjà été scanné.</ion-label>
+    <ion-item *ngIf="error">
+      <ion-label class="error">{{error}}</ion-label>
     </ion-item>
   </ion-list>
-
 </ion-content>
 
 <ion-footer class="full-width-action-button">
