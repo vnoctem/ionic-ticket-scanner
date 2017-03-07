@@ -27,11 +27,17 @@ export class AuthenticationPage {
     this.authCtrl.postLogin({
       'username': this.username,
       'password': this.password
-    }).then(user => {
-      this.navCtrl.setRoot(HomePage, { 'isOriginScanner': false });
-    }).catch(err => {
-      this.error = err._body.message;
-    });
+    })
+      .then(user => {
+        this.navCtrl.setRoot(HomePage, { 'isOriginScanner': false });
+      })
+      .catch(err => {
+        if (err.status == 0) { // API unavailable
+          this.error = 'Le serveur n\'est pas disponible';
+        } else if (err._body.message) {
+          this.error = err._body.message;
+        }
+      });
   }
 
 }

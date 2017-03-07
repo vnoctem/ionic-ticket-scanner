@@ -29,7 +29,9 @@ export class AuthController {
       })
       .catch(err => {
         // Only return the error so that the client can handle it
-        err._body = JSON.parse(err._body);
+        if (typeof err._body === 'string') {
+          err._body = JSON.parse(err._body);
+        }
         return Promise.reject(err);
       });
   }

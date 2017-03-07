@@ -11,6 +11,10 @@
 </ion-header>
 
 <ion-content padding>
+  <div padding>
+    <label class="directive" *ngIf="!isOriginScanner">Vous pouvez commencer à valider des billets.</label>
+  </div>
+
   <ion-list *ngIf="isTicketValid && isOriginScanner">
     <audio autoplay>
       <source src="assets/music/valid_ticket.wav" type="audio/wav">

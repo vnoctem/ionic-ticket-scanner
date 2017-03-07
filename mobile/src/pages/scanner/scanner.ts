@@ -23,39 +23,45 @@ export class ScannerPage {
       .then(barcodeData => {
         // Not cancelled by user and is a QR code
         if (!barcodeData.cancelled && barcodeData.format == 'QR_CODE') {
-          this.scanCtrl.postValidation(
+          return this.scanCtrl.postValidation(
             { 'GUID': barcodeData.text },
             this.authCtrl.getToken()
-          )
-            .then(ticket => {
-              // Ticket is valid
-              this.navCtrl.setRoot(HomePage,
-                {
-                  'isOriginScanner': true,
-                  'isTicketValid': true,
-                  'ticket': ticket
-                });
-            })
-            .catch(err => {
-              // Ticket is invalid (invalid QR code or already scanned)
-              this.navCtrl.setRoot(HomePage,
-                {
-                  'isOriginScanner': true,
-                  'isTicketValid': false,
-                  'message' : JSON.parse(err._body).message
-                });
-            });
+          );
         }
       })
-      .catch(err => {
-        // An error occurred while scanning the QR code
-        this.navCtrl.setRoot(HomePage, 
+      .then(ticket => {
+        // Ticket is valid
+        this.navCtrl.setRoot(HomePage,
           {
             'isOriginScanner': true,
-            'message': 'Erreur',
-            'error': 'Une erreur est survenue lors de la lecture du code QR.'
+            'isTicketValid': true,
+            'ticket': ticket
           });
+      })
+      .catch(err => {
+        if (err.status == 0) { // API unavailable
+          this.navCtrl.setRoot(HomePage,
+            {
+              'isOriginScanner': true,
+              'message': 'Erreur',
+              'error': 'Le serveur n\'est pas disponible.'
+            });
+        } else { // Ticket is invalid (invalid QR code or already scanned)
+          this.navCtrl.setRoot(HomePage,
+            {
+              'isOriginScanner': true,
+              'isTicketValid': false,
+              'message': this.convertToJSON(err)._body.message
+            });
+        }
       });
+  }
+
+  private convertToJSON(err: any) {
+    if (typeof err._body === 'string') {
+      err._body = JSON.parse(err._body);
+    }
+    return err;
   }
 
 }
