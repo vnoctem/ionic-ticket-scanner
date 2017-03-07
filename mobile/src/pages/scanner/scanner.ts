@@ -5,6 +5,7 @@ import { BarcodeScanner } from 'ionic-native';
 import { ScanController } from './../../providers/scan-controller'
 import { AuthController } from './../../providers/auth-controller'
 
+
 /*
   Generated class for the Scanner page.
 

@@ -4,6 +4,7 @@ import { LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AuthController } from './../../providers/auth-controller'
 
+
 /*
   Generated class for the Authentication page.
 

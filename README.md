@@ -15,7 +15,7 @@ npm install
 
 To install Ionic
 ```
-npm install -g cordova Ionic
+npm install -g cordova ionic
 ```
 
 To recreate all needed files in Ionic

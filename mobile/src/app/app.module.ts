@@ -12,6 +12,7 @@ import { ScanController } from './../providers/scan-controller';
 import { NetworkController } from './../providers/network-controller';
 import { ServerController } from './../providers/server-controller';
 
+
 @NgModule({
   declarations: [
     MyApp,
