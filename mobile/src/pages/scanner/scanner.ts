@@ -50,9 +50,7 @@ export class ScannerPage {
         }
       })
       .catch(err => {
-        alert(JSON.stringify(err));
         if (this.convertToJSON(err)._body.redirect) { // Token is invalid (expired)
-          alert('Token is invalid');
           this.navCtrl.setRoot(AuthenticationPage,
             {
               'error': this.convertToJSON(err)._body.message

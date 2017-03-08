@@ -23,7 +23,7 @@ router.post('/login', function (req, res, next) {
             // Create token
             ret['token'] = jwt.sign(admin, secret.key,
                 {
-                    expiresIn: 30 // Expires in 5 minutes
+                    expiresIn: 300 // Expires in 5 minutes
                 });
             res.json({ 'user': ret });
         } else {
