@@ -17,9 +17,9 @@ export class HomePage {
   private isOriginScanner: boolean = false;
   private isTicketValid: boolean = false;
   private ticket: any;
-  private message: String;
-  private error: any;
-  private pageTitle: String = 'Accueil';
+  private message: string;
+  private error: string;
+  private pageTitle: string = 'Accueil';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // check if the page that called HomePage is ScannerPage

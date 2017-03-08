@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { BarcodeScanner } from 'ionic-native';
 import { ScanController } from './../../providers/scan-controller'
 import { AuthController } from './../../providers/auth-controller'
+import { AuthenticationPage } from '../authentication/authentication'
 
 
 /*
@@ -18,7 +19,11 @@ import { AuthController } from './../../providers/auth-controller'
 })
 export class ScannerPage {
 
+  private isCancelled: boolean;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public scanCtrl: ScanController, public authCtrl: AuthController) {
+    this.isCancelled = false;
+
     // Start scanning
     BarcodeScanner.scan()
       .then(barcodeData => {
@@ -28,26 +33,36 @@ export class ScannerPage {
             { 'GUID': barcodeData.text },
             this.authCtrl.getToken()
           );
+        } else if (barcodeData.cancelled) { // If scan is cancelled by user
+          this.isCancelled = true;
+          this.navCtrl.setRoot(HomePage);
         }
       })
       .then(ticket => {
-        // Ticket is valid
-        this.navCtrl.setRoot(HomePage,
-          {
-            'isOriginScanner': true,
-            'isTicketValid': true,
-            'ticket': ticket
-          });
+        // Ticket is valid and scan was not cancelled
+        if (!this.isCancelled) {
+          this.navCtrl.setRoot(HomePage,
+            {
+              'isOriginScanner': true,
+              'isTicketValid': true,
+              'ticket': ticket
+            });
+        }
       })
       .catch(err => {
-        if (err.status == 0) { // API unavailable
+        if (this.convertToJSON(err)._body.redirect) { // Token is invalid (expired)
+          this.navCtrl.setRoot(AuthenticationPage,
+            {
+              'error': this.convertToJSON(err)._body.message
+            });
+        } else if (err.status == 0) { // API unavailable
           this.navCtrl.setRoot(HomePage,
             {
               'isOriginScanner': true,
               'message': 'Erreur',
               'error': 'Le serveur n\'est pas disponible.'
             });
-        } else { // Ticket is invalid (invalid QR code or already scanned)
+        } else { // Ticket is invalid (doesn't exist or already scanned)
           this.navCtrl.setRoot(HomePage,
             {
               'isOriginScanner': true,
