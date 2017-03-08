@@ -5,62 +5,70 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>Accueil</ion-title>
+    <ion-title>{{pageTitle}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+  <div padding>
+    <label class="directive" *ngIf="!isOriginScanner">Vous pouvez commencer à valider des billets.</label>
+  </div>
 
-    <div class="div-content" *ngIf="isOriginScanner">
+  <ion-list *ngIf="isTicketValid && isOriginScanner">
+    <audio autoplay>
+      <source src="assets/music/valid_ticket.wav" type="audio/wav">
+    </audio>
+    <ion-item class="valid-ticket no-border">
+      <label class="label-result">Billet valide</label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>ID</ion-label>
+      <ion-label class="info">{{ticket.id}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Hash</ion-label>
+      <ion-label class="info">{{ticket.GUID}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Nom du propriétaire</ion-label>
+      <ion-label class="info">{{ticket.owner.fullname}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Nom du spectacle</ion-label>
+      <ion-label class="info">{{ticket.showName}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Date et heure du spectacle</ion-label>
+      <ion-label class="info">{{ticket.datetime}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Nom de la salle</ion-label>
+      <ion-label class="info">{{ticket.location}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Adresse de la salle</ion-label>
+      <ion-label class="info">{{ticket.address}}</ion-label>
+    </ion-item>
+  </ion-list>
 
-      <div class="{{ isTicketValid ? 'div-if-valid-ticket' : 'div-if-invalid-ticket' }}">
-        <label *ngIf="isTicketValid" class="label-result">Billet valide</label>
-        <label *ngIf="!isTicketValid" class="label-result">Billet invalide</label>
-      </div>
-      <ion-list class="list-info" *ngIf="isTicketValid">
-          <ion-item>
-            <ion-label stacked>ID billet</ion-label>
-            <ion-label class="no-margin-top">1234567</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label stacked>Nom du propriétaire</ion-label>
-            <ion-label class="no-margin-top">Vincent Gauthier</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label stacked>Nom du spectacle</ion-label>
-            <ion-label class="no-margin-top">Volta du Cirque du Soleil</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label stacked>Date et heure du spectacle</ion-label>
-            <ion-label class="no-margin-top">2017-03-04 19h00</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label stacked>Nom de la salle</ion-label>
-            <ion-label class="no-margin-top">Grand Chapiteau</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-label stacked>Adresse de la salle</ion-label>
-            <ion-label class="no-margin-top">145 de la Commune E., Montréal, Qc, H2Y 1J1</ion-label>
-          </ion-item>
-        </ion-list>
+  <ion-list *ngIf="message && isOriginScanner">
+    <audio autoplay>
+      <source src="assets/music/invalid_ticket.wav" type="audio/wav">
+    </audio>
+    <ion-item class="invalid-ticket no-border">
+      <label class="label-result">{{message}}</label>
+    </ion-item>
+    <ion-item *ngIf="error">
+      <ion-label class="error">{{error}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
 
-        <ion-list class="list-info" *ngIf="!isTicketValid">
-          <ion-item>
-            <ion-label stacked>Raison de l'invadilité</ion-label>
-            <ion-label>Le billet a déjà été scanné.</ion-label>
-          </ion-item>
-        </ion-list>
-    </div>
-
-    <div class="bottom-block-button">
-      <button ion-button icon-only (click)="goToScanner()">
-        <!--Basic: auto-select the icon based on the platform -->
+<ion-footer class="full-width-action-button">
+  <ion-toolbar>
+    <button ion-button icon-only class="button button-block button-block-md button-md-primary" (click)="goToScanner()">
         <ion-icon name="camera"></ion-icon>
       </button>
-    </div>
-    
-</ion-content>
+  </ion-toolbar>
+</ion-footer>

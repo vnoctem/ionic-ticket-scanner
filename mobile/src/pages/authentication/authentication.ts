@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { AuthController } from './../../providers/auth-controller'
+
 
 /*
   Generated class for the Authentication page.
@@ -15,58 +17,28 @@ import { HomePage } from '../home/home';
 })
 export class AuthenticationPage {
 
-private error: any = '';
+  private username: string;
+  private password: string;
+  private error: any = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) {
-    this.presentLoading();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public authCtrl: AuthController) {
   }
 
-  createLoader(content) {
-    return this.loadingCtrl.create({
-      'content': content
-    });
-  }
-
-  loadNetwork() {
-    return new Promise((resolve: any, reject: any) => {
-      let loader = this.createLoader("En attente du réseau GTI525...");
-      loader.present();
-
-      setTimeout(() => {
-        loader.dismiss();
-        resolve();
-      }, 1000);
-    });
-  }
-
-  loadServer() {
-    return new Promise((resolve: any, reject: any) => {
-      let loader = this.createLoader("En attente du serveur...");
-      loader.present();
-
-      setTimeout(() => {
-        loader.dismiss();
-        resolve();
-      }, 1000);
-    });
-  }
-
-  presentLoading() {
-    // loading sequence
-    // load network first
-    this.loadNetwork()
-    .then(() => {
-      // then load server
-      return this.loadServer();
+  public login() {
+    this.authCtrl.postLogin({
+      'username': this.username,
+      'password': this.password
     })
-    .catch((msg) => {
-      this.error = msg;
-    });
-  }
-
-  // navigation for prototype (go to Home)
-  goToHome() {
-    this.navCtrl.setRoot(HomePage);
+      .then(user => {
+        this.navCtrl.setRoot(HomePage, { 'isOriginScanner': false });
+      })
+      .catch(err => {
+        if (err.status == 0) { // API unavailable
+          this.error = 'Le serveur n\'est pas disponible';
+        } else if (err._body.message) {
+          this.error = err._body.message;
+        }
+      });
   }
 
 }

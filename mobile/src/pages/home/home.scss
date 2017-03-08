@@ -1,39 +1,51 @@
 page-home {
-    
+    .directive {
+        font-size: 1.2em;
+        color: #999999;
+        font-weight: bold;
+    }
+
     .result-ticket {
         border-radius: 5px;
         padding: 10px;
     }
 
-    .div-if-valid-ticket {
+    .valid-ticket {
         @extend .result-ticket;
         background-color: green;
     }
 
-    .div-if-invalid-ticket {
+    .invalid-ticket {
         @extend .result-ticket;
         background-color: red;
     }
 
     .label-result {
         color: ghostwhite;
-        font-size: 32px;
+        font-size: 2em;
         text-align: center;
         display: block;
-    }
-
-    .list-info {
-        position: absolute;
-        top: 13%;
     }
 
     .item {
         padding-right: 16px;
 
-        ion-label:nth-child(2) {
+        .info {
             white-space: normal;
             overflow: visible;
             margin-top: 5px;
         }
+
+        .error {
+            color: #dd5555;
+            font-weight: bold;
+            font-size: 1.2em;
+            white-space: normal;
+            overflow: visible;
+        }
+    }
+
+    .list-md .item-block.no-border .item-inner {
+        border: 0px;
     }
 }
