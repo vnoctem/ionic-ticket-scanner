@@ -1,9 +1,9 @@
-var passport = require('passport');
+var strategy = require('../config/strategy');
 var router = require('express').Router();
 var tickets = require('../models/tickets');
 var _ = require('lodash');
 
-router.post('/validation', passport.authenticate('jwt', { session: false }), function (req, res) {
+router.post('/validation', strategy, function (req, res) {
     for (let i = 0; i < tickets.length; i++) {
         if (tickets[i].GUID == req.body.GUID) {
             // If the GUID was already checked

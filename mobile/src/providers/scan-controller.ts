@@ -20,7 +20,7 @@ export class ScanController {
 
   public postValidation(data: any, token: string) {
     let headers = new Headers();
-    headers.append('Authorization', token);
+    headers.append('x-access-token', token);
     return this.http.post(
       this.managementApiUrl + '/tickets/validation',
       data,

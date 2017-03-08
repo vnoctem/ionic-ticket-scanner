@@ -4,6 +4,7 @@ import { HomePage } from '../home/home';
 import { BarcodeScanner } from 'ionic-native';
 import { ScanController } from './../../providers/scan-controller'
 import { AuthController } from './../../providers/auth-controller'
+import { AuthenticationPage } from '../authentication/authentication'
 
 
 /*
@@ -32,7 +33,7 @@ export class ScannerPage {
             { 'GUID': barcodeData.text },
             this.authCtrl.getToken()
           );
-        } else if (barcodeData.cancelled) { // If cancelled by user
+        } else if (barcodeData.cancelled) { // If scan is cancelled by user
           this.isCancelled = true;
           this.navCtrl.setRoot(HomePage);
         }
@@ -49,14 +50,21 @@ export class ScannerPage {
         }
       })
       .catch(err => {
-        if (err.status == 0) { // API unavailable
+        alert(JSON.stringify(err));
+        if (this.convertToJSON(err)._body.redirect) { // Token is invalid (expired)
+          alert('Token is invalid');
+          this.navCtrl.setRoot(AuthenticationPage,
+            {
+              'error': this.convertToJSON(err)._body.message
+            });
+        } else if (err.status == 0) { // API unavailable
           this.navCtrl.setRoot(HomePage,
             {
               'isOriginScanner': true,
               'message': 'Erreur',
               'error': 'Le serveur n\'est pas disponible.'
             });
-        } else { // Ticket is invalid (invalid QR code or already scanned)
+        } else { // Ticket is invalid (doesn't exist or already scanned)
           this.navCtrl.setRoot(HomePage,
             {
               'isOriginScanner': true,

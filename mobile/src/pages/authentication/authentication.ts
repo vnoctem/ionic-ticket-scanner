@@ -19,9 +19,10 @@ export class AuthenticationPage {
 
   private username: string;
   private password: string;
-  private error: any = '';
+  private error: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public authCtrl: AuthController) {
+    this.error = navParams.get('error');
   }
 
   public login() {
