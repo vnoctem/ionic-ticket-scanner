@@ -9,7 +9,6 @@ import { ConnectionServerPage } from '../pages/connection-server/connection-serv
 import { AuthController } from './../providers/auth-controller';
 import { AppSettings } from './../providers/app-settings';
 import { ScanController } from './../providers/scan-controller';
-import { NetworkController } from './../providers/network-controller';
 import { ServerController } from './../providers/server-controller';
 
 
@@ -39,7 +38,6 @@ import { ServerController } from './../providers/server-controller';
     AppSettings,
     AuthController,
     ScanController,
-    NetworkController,
     ServerController
   ]
 })

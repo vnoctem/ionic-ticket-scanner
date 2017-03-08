@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var tickets = require('./routes/tickets');
-var passport = require('passport');
+
 var cors = require('cors');
 
 var app = express();
@@ -21,10 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
 
-app.use(passport.initialize());
-// Configure strategy with JWT
-require('./config/passport')(passport);
-
+// Routes mapping
 app.use('/api', index);
 app.use('/api/tickets', tickets);
 
