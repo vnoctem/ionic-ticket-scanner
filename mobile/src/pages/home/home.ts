@@ -40,6 +40,6 @@ export class HomePage {
   }
 
   public goToScanner() {
-    this.navCtrl.setRoot(ScannerPage);
+    this.navCtrl.push(ScannerPage);
   }
 }
