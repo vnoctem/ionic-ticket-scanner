@@ -10,7 +10,7 @@ import { AuthController } from './../providers/auth-controller';
 import { AppSettings } from './../providers/app-settings';
 import { ScanController } from './../providers/scan-controller';
 import { ServerController } from './../providers/server-controller';
-
+import { StorageService } from './../providers/storage-service';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { ServerController } from './../providers/server-controller';
     AppSettings,
     AuthController,
     ScanController,
-    ServerController
+    ServerController,
+    StorageService
   ]
 })
 export class AppModule {}

@@ -2,7 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AppSettings } from './app-settings';
+import { StorageService } from './storage-service';
 import 'rxjs/add/operator/toPromise';
+
+const KEYS = {
+  user: 'scan-user'
+}
 
 /*
   Generated class for the AuthController provider.
@@ -16,7 +21,8 @@ export class AuthController {
   private managementApiUrl: string = this.appSettings.getManagementApiUrl();
   private currentUser: any;
 
-  constructor(public http: Http, public appSettings: AppSettings) {
+  constructor(public http: Http, public appSettings: AppSettings, public storService: StorageService) {
+    this.currentUser = this.storService.loadObject(KEYS.user);
   }
 
   public postLogin(data: any) {
@@ -25,6 +31,8 @@ export class AuthController {
       .toPromise()
       .then(res => {
         this.currentUser = res.user;
+        // Save token and user locally
+        this.storService.saveObject(KEYS.user, this.currentUser);
         return this.currentUser;
       })
       .catch(err => {
@@ -38,6 +46,11 @@ export class AuthController {
 
   public getToken() {
     return this.currentUser.token;
+  }
+
+  // return an object, but should be used as a boolean
+  public hasBeenAuthenticated() {
+    return this.storService.loadObject(KEYS.user);
   }
 
 }
