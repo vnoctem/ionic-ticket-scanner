@@ -48,12 +48,6 @@ export class ScannerPage {
         }
       })
       .catch(err => {
-        /*if (this.convertToJSON(err)._body.redirect) { // Token is invalid (expired)
-          this.navCtrl.setRoot(AuthenticationPage,
-            {
-              'error': this.convertToJSON(err)._body.message
-            });
-        } else */
         if (err.status == 0) { // API unavailable
           this.navCtrl.setRoot(HomePage,
             {
@@ -93,7 +87,14 @@ export class ScannerPage {
             {
               'isOriginScanner': true,
               'message': 'Erreur',
-              'error': 'Raspberry Pi est désynchronisé avec le réseau.'
+              'error': 'Le Raspberry Pi est désynchronisé avec le réseau.'
+            });
+        } else { // An unknown error happened
+          this.navCtrl.setRoot(HomePage,
+            {
+              'isOriginScanner': true,
+              'message': 'Erreur',
+              'error': 'Une erreur inconnue est survenue.'
             });
         }
       });
