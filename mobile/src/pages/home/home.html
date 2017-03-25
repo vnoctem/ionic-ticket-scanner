@@ -23,32 +23,28 @@
       <label class="label-result">Billet valide</label>
     </ion-item>
     <ion-item>
-      <ion-label stacked>ID</ion-label>
-      <ion-label class="info">{{ticket.id}}</ion-label>
-    </ion-item>
-    <ion-item>
       <ion-label stacked>Hash</ion-label>
-      <ion-label class="info">{{ticket.GUID}}</ion-label>
+      <ion-label class="info">{{ticket.ticketHash}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Nom du propriétaire</ion-label>
-      <ion-label class="info">{{ticket.owner.fullname}}</ion-label>
+      <ion-label class="info">{{ticket.owner}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Nom du spectacle</ion-label>
-      <ion-label class="info">{{ticket.showName}}</ion-label>
+      <ion-label class="info">{{ticket.event.name}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Date et heure du spectacle</ion-label>
-      <ion-label class="info">{{ticket.datetime}}</ion-label>
+      <ion-label class="info">{{ticket.event.time | date: 'yyyy-MM-dd HH:mm'}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Nom de la salle</ion-label>
-      <ion-label class="info">{{ticket.location}}</ion-label>
+      <ion-label class="info">{{ticket.event.auditorium.name}}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label stacked>Adresse de la salle</ion-label>
-      <ion-label class="info">{{ticket.address}}</ion-label>
+      <ion-label class="info">{{ticket.event.auditorium.address}}</ion-label>
     </ion-item>
   </ion-list>
 

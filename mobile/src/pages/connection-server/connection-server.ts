@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
-import { AuthenticationPage } from './../authentication/authentication';
+import { HomePage } from './../home/home';
 import { ServerController } from './../../providers/server-controller';
 import { AuthController } from './../../providers/auth-controller';
 
@@ -41,7 +41,7 @@ export class ConnectionServerPage {
             this.error = 'Le serveur n\'est pas disponible.';
             break;
           default:
-            this.navCtrl.setRoot(AuthenticationPage);
+            this.navCtrl.setRoot(HomePage);
         }
       });
   }

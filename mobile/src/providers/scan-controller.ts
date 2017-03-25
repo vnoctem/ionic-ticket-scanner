@@ -18,17 +18,17 @@ export class ScanController {
   constructor(public http: Http, public appSettings: AppSettings) {
   }
 
-  public postValidation(data: any, token: string) {
+  public postValidation(ticketHash: any) {
     let headers = new Headers();
-    headers.append('x-access-token', token);
+    headers.append('api-key', 'bob'); // 'bob' will be change later on for production
     return this.http.post(
-      this.managementApiUrl + '/tickets/validation',
-      data,
+      `${this.managementApiUrl}/ticket/validate/${ticketHash}/`,
+      '',
       new RequestOptions({ 'headers': headers })
     )
       .map(res => res.json())
       .toPromise()
-      .then(res => res.ticket);
+      .then(res => res);
   }
-
+  
 }

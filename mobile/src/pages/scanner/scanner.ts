@@ -4,7 +4,6 @@ import { HomePage } from '../home/home';
 import { BarcodeScanner } from 'ionic-native';
 import { ScanController } from './../../providers/scan-controller'
 import { AuthController } from './../../providers/auth-controller'
-import { AuthenticationPage } from '../authentication/authentication'
 
 
 /*
@@ -30,8 +29,7 @@ export class ScannerPage {
         // Not cancelled by user and is a QR code
         if (!barcodeData.cancelled && barcodeData.format == 'QR_CODE') {
           return this.scanCtrl.postValidation(
-            { 'GUID': barcodeData.text },
-            this.authCtrl.getToken()
+            barcodeData.text
           );
         } else if (barcodeData.cancelled) { // If scan is cancelled by user
           this.isCancelled = true;
@@ -50,24 +48,52 @@ export class ScannerPage {
         }
       })
       .catch(err => {
-        if (this.convertToJSON(err)._body.redirect) { // Token is invalid (expired)
+        /*if (this.convertToJSON(err)._body.redirect) { // Token is invalid (expired)
           this.navCtrl.setRoot(AuthenticationPage,
             {
               'error': this.convertToJSON(err)._body.message
             });
-        } else if (err.status == 0) { // API unavailable
+        } else */
+        if (err.status == 0) { // API unavailable
           this.navCtrl.setRoot(HomePage,
             {
               'isOriginScanner': true,
               'message': 'Erreur',
               'error': 'Le serveur n\'est pas disponible.'
             });
-        } else { // Ticket is invalid (doesn't exist or already scanned)
+        } else if (err.status == 400) { // **Should not happen** : Bad request (The request cannot be fulfilled due to bad syntax)
+          this.navCtrl.setRoot(HomePage,
+            {
+              'isOriginScanner': true,
+              'message': 'Erreur',
+              'error': 'Mauvaise requête.'
+            });
+        } else if (err.status == 403) { // ** Should not happen** : Invalid API key
+          this.navCtrl.setRoot(HomePage,
+            {
+              'isOriginScanner': true,
+              'message': 'Erreur',
+              'error': 'Clé API invalide.'
+            });
+        } else if (err.status == 404) { // Ticket not found (most likely because the QR code was not a ticket)
+          this.navCtrl.setRoot(HomePage,
+            {
+              'isOriginScanner': true,
+              'message': 'Billet invalide'
+            });
+        } else if (err.status == 409) { // Ticket already validated
           this.navCtrl.setRoot(HomePage,
             {
               'isOriginScanner': true,
               'isTicketValid': false,
-              'message': this.convertToJSON(err)._body.message
+              'message': 'Billet déjà validé'
+            });
+        } else if (err.status == 503) { // Hotspot is out of sync with the network
+          this.navCtrl.setRoot(HomePage,
+            {
+              'isOriginScanner': true,
+              'message': 'Erreur',
+              'error': 'Raspberry Pi est désynchronisé avec le réseau.'
             });
         }
       });

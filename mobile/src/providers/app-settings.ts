@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 const CONFIG = {
-  managementApiUrl: 'https://floating-journey-47057.herokuapp.com/api'
+  managementApiUrl: 'http://thierrycheutin.com:8000/api'
 }
 
 /*
