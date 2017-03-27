@@ -20,7 +20,7 @@ export class ScanController {
 
   public postValidation(ticketHash: any) {
     let headers = new Headers();
-    headers.append('api-key', 'bob'); // 'bob' will be change later on for production
+    headers.append('api-key', 'ooXein0ZieZohfoh0phuCee0eeng6aomu6tei7le9eiHo4Fai0'); // API key
     return this.http.post(
       `${this.managementApiUrl}/ticket/validate/${ticketHash}/`,
       '',
