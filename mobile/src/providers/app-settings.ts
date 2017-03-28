@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
 const CONFIG = {
-  managementApiUrl: 'http://borne.gti525.org/api'
+  managementApiUrl: 'http://borne.gti525.org/api',
+  managementApiKey: 'ooXein0ZieZohfoh0phuCee0eeng6aomu6tei7le9eiHo4Fai0'
 }
 
 /*
@@ -15,6 +16,10 @@ export class AppSettings {
 
   public getManagementApiUrl() {
     return CONFIG.managementApiUrl;
+  }
+
+  public getManagementApiKey() {
+    return CONFIG.managementApiKey;
   }
 
 }

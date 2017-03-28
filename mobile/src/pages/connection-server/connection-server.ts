@@ -34,14 +34,12 @@ export class ConnectionServerPage {
       .then(() => {
         return this.servCtrl.isServerAvailable();
       })
-      .catch((err: any) => {
+      .catch(err => {
         loader.dismiss();
-        switch (err.status) {
-          case 0:
-            this.error = 'Le serveur n\'est pas disponible.';
-            break;
-          default:
-            this.navCtrl.setRoot(HomePage);
+        if (err.status == 0) { // API is unavailable
+          this.error = 'Le serveur n\'est pas disponible.';
+        } else { // API is available
+          this.navCtrl.setRoot(HomePage);
         }
       });
   }
