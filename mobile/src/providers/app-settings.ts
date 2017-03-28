@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 const CONFIG = {
-  managementApiUrl: 'http://thierrycheutin.com:8000/api'
+  managementApiUrl: 'http://borne.gti525.org/api'
 }
 
 /*
