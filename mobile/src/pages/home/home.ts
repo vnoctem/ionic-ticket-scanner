@@ -22,6 +22,7 @@ export class HomePage {
   private pageTitle: string = 'Accueil';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
     // check if the page that called HomePage is ScannerPage
     this.isOriginScanner = this.navParams.get('isOriginScanner');
     // change page title if it's a scan result

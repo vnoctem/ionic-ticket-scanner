@@ -14,21 +14,22 @@ import 'rxjs/add/operator/toPromise';
 export class ScanController {
 
   private managementApiUrl: string = this.appSettings.getManagementApiUrl();
+  private managementApiKey: string = this.appSettings.getManagementApiKey();
 
   constructor(public http: Http, public appSettings: AppSettings) {
   }
 
-  public postValidation(data: any, token: string) {
+  public postValidation(ticketHash: any) {
     let headers = new Headers();
-    headers.append('x-access-token', token);
+    headers.append('api-key', this.managementApiKey);
     return this.http.post(
-      this.managementApiUrl + '/tickets/validation',
-      data,
+      `${this.managementApiUrl}/ticket/validate/${ticketHash}/`,
+      '',
       new RequestOptions({ 'headers': headers })
     )
       .map(res => res.json())
       .toPromise()
-      .then(res => res.ticket);
+      .then(res => res);
   }
-
+  
 }

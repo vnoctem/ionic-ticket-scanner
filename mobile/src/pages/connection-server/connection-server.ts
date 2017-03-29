@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
-import { AuthenticationPage } from './../authentication/authentication';
+import { HomePage } from './../home/home';
 import { ServerController } from './../../providers/server-controller';
 import { AuthController } from './../../providers/auth-controller';
 
@@ -34,14 +34,12 @@ export class ConnectionServerPage {
       .then(() => {
         return this.servCtrl.isServerAvailable();
       })
-      .catch((err: any) => {
+      .catch(err => {
         loader.dismiss();
-        switch (err.status) {
-          case 0:
-            this.error = 'Le serveur n\'est pas disponible.';
-            break;
-          default:
-            this.navCtrl.setRoot(AuthenticationPage);
+        if (err.status == 0) { // API is unavailable
+          this.error = 'Le serveur n\'est pas disponible.';
+        } else { // API is available
+          this.navCtrl.setRoot(HomePage);
         }
       });
   }
