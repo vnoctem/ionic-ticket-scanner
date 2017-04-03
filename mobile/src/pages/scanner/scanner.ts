@@ -100,11 +100,4 @@ export class ScannerPage {
       });
   }
 
-  private convertToJSON(err: any) {
-    if (typeof err._body === 'string') {
-      err._body = JSON.parse(err._body);
-    }
-    return err;
-  }
-
 }
