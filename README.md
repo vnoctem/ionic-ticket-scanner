@@ -1,4 +1,4 @@
-# h17-mobile-scan
+# Ionic ticket scanning app
 
 ## Installing
 Once you have cloned the repository, you'll need to install dependencies to get the application running  :
